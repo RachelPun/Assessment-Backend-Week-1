@@ -18,7 +18,7 @@ def get_days_between(first: datetime, last: datetime) -> int:
         raise TypeError("Datetimes required.")
 
     delta = last - first
-    return abs(delta.days)
+    return delta.days
 
 
 def get_day_of_week_on(date: datetime) -> str:

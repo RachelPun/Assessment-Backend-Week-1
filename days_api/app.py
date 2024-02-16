@@ -53,7 +53,20 @@ def history():
 @app.route("/between", methods=["POST"])
 def post_days_between_dates():
     """Returns the number of days between two dates."""
-    pass
+
+    if not all(arg in request.json for arg in ["first", "last"]):
+        return jsonify({"error": "Missing required data."}), 400
+
+    try:
+        first = convert_to_datetime(request.json["first"])
+        last = convert_to_datetime(request.json["last"])
+    except Exception as error:
+        return jsonify({"error": error.args[0]}), 400
+
+    days = get_days_between(first, last)
+
+    add_to_history(request)
+    return jsonify({"days": days})
 
 
 @app.route("/weekday", methods=["POST"])

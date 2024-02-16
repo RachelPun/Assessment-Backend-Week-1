@@ -302,7 +302,8 @@ class TestHistory:
     def test_history_tracks_between(self, test_app):
         """Checks that the between route adds to the history"""
 
-        test_app.post("/between", data={"first": "12.1.2000", "last": "14.1.2000"})
+        test_app.post(
+            "/between", data={"first": "12.1.2000", "last": "14.1.2000"})
 
         result = test_app.get("/history")
         data = result.json
