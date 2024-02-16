@@ -291,7 +291,7 @@ class TestHistory:
         for _ in range(3):
             test_app.get("/history")
 
-        test_app.post("/weekday", data={"date": "09.10.2023"})
+        test_app.post("/weekday", json={"date": "09.10.2023"})
 
         result = test_app.get("/history")
         data = result.json
@@ -303,7 +303,7 @@ class TestHistory:
         """Checks that the between route adds to the history"""
 
         test_app.post(
-            "/between", data={"first": "12.1.2000", "last": "14.1.2000"})
+            "/between", json={"first": "12.1.2000", "last": "14.1.2000"})
 
         result = test_app.get("/history")
         data = result.json
@@ -314,7 +314,7 @@ class TestHistory:
     def test_history_tracks_weekday(self, test_app):
         """Checks that the weekday route adds to the history"""
 
-        test_app.post("/weekday", data={"date": "09.10.2023"})
+        test_app.post("/weekday", json={"date": "09.10.2023"})
 
         result = test_app.get("/history")
         data = result.json
