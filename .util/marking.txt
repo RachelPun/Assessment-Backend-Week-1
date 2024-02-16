@@ -1,0 +1,25 @@
+============================= test session starts ==============================
+platform linux -- Python 3.11.8, pytest-8.0.0, pluggy-1.4.0
+rootdir: /home/runner/work/Assessment-Backend-Week-1/Assessment-Backend-Week-1
+collected 85 items
+
+days_api/test_api.py .FFFFFFFFFFFFFFFFFFFF.FFFFFFFFFFFFFFFFFFFF......FFF [ 60%]
+FFFFFFFFF                                                                [ 70%]
+days_api/test_date_functions.py .........................                [100%]
+
+======================== 52 failed, 33 passed in 0.28s =========================
+************* Module app
+days_api/app.py:32:0: R1710: Either all return statements in a function should return an expression, or none of them should. (inconsistent-return-statements)
+days_api/app.py:35:4: W0612: Unused variable 'num' (unused-variable)
+days_api/app.py:46:4: W0107: Unnecessary pass statement (unnecessary-pass)
+days_api/app.py:52:4: W0107: Unnecessary pass statement (unnecessary-pass)
+days_api/app.py:7:0: W0611: Unused Response imported from flask (unused-import)
+days_api/app.py:9:0: W0611: Unused convert_to_datetime imported from date_functions (unused-import)
+days_api/app.py:9:0: W0611: Unused get_day_of_week_on imported from date_functions (unused-import)
+days_api/app.py:9:0: W0611: Unused get_days_between imported from date_functions (unused-import)
+************* Module date_functions
+days_api/date_functions.py:11:8: W0707: Consider explicitly re-raising using 'except Exception as exc' and 'raise ValueError('Unable to convert value to datetime.') from exc' (raise-missing-from)
+
+------------------------------------------------------------------
+Your code has been rated at 9.53/10 (previous run: 9.53/10, +0.00)
+
