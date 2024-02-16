@@ -25,7 +25,25 @@ def add_to_history(current_request):
 @app.get("/")
 def index():
     """Returns an API welcome messsage."""
-    return jsonify({ "message": "Welcome to the Days API." })
+    return jsonify({"message": "Welcome to the Days API."})
+
+
+@app.route("/history", methods=["GET", "DELETE"])
+def history_get_or_delete():
+    """Returns details on the last number of requests to the API."""
+    pass
+
+
+@app.route("/between", methods=["POST"])
+def post_days_between_dates():
+    """Returns the number of days between two dates."""
+    pass
+
+
+@app.route("/weekday", methods=["POST"])
+def post_weekday_of_date():
+    """Returns the day of the week a specific date is."""
+    pass
 
 
 if __name__ == "__main__":

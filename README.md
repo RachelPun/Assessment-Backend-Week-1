@@ -38,7 +38,7 @@ The API is JSON-based; **all responses should be in JSON format** only.
 | `/between` | `POST` | A request body with the following keys:<br />- `first` (string in the format `DD.MM.YYYY`)<br />- `last` (string in the format `DD.MM.YYYY`) | `{ "days": 17 }` | Returns the number of days between two dates |
 | `/weekday` | `POST` | A request body with the following key:<br />- `date` (string in the format `DD.MM.YYYY`) | `{ "weekday": "Monday" }` | Returns the day of the week a specific date is |
 | `/history` | `GET` | Optional query parameter:<br />- `number` (the number of requests to return; default 5, 1<=number<=20) | `[{"method": "POST", "at": "12/02/2023 18:36", "route": "weekday"}, {"method": "POST", "at": "12/02/2023 18:39", "route": "weekday"}]` | Returns details on the last `number` of requests to the API |
-| `/history` | `DELETE` | None | `{ "status": "History cleared" }` | Returns details on the last `number` of requests to the API |
+| `/history` | `DELETE` | None | `{ "status": "History cleared" }` | Deletes all of the history for the API |
 
 ## Marking
 
