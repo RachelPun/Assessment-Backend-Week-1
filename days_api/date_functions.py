@@ -5,14 +5,18 @@ from datetime import datetime
 
 def convert_to_datetime(date: str) -> datetime:
     """Converts string to datetime; returns datetime."""
-    return datetime.strptime(date, "%d %m %Y")
+    return datetime.strptime(date, "%d.%m.%Y")
 
 
 def get_days_between(first: datetime, last: datetime) -> int:
     """Returns number of days between 2 dates."""
-    pass
+    delta = last - first
+    return abs(delta.days)
 
 
 def get_day_of_week_on(date: datetime) -> str:
     """Returns the day of the week of a specific date."""
-    pass
+    days = ["Monday", "Tuesday", "Wednesday",
+            "Thursday", "Friday", "Saturday", "Sunday"]
+    day_index = date.timetuple()[6]
+    return days[day_index]
