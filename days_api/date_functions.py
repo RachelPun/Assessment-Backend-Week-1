@@ -13,6 +13,8 @@ def convert_to_datetime(date: str) -> datetime:
 
 def get_days_between(first: datetime, last: datetime) -> int:
     """Returns number of days between 2 dates."""
+    if not all(isinstance(arg, datetime) for arg in [first, last]):
+        raise TypeError("Datetimes required.")
     delta = last - first
     return abs(delta.days)
 
