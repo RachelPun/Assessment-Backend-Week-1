@@ -31,7 +31,13 @@ def index():
 @app.route("/history", methods=["GET", "DELETE"])
 def history_get_or_delete():
     """Returns details on the last number of requests to the API."""
-    pass
+
+    num = 5
+    if "number" in request.args:
+        if not isinstance(request.args["number"], int):
+            return jsonify({"error": "Number must be an integer between 1 and 20."}), 400
+        if not 1 <= request.args["number"] <= 20:
+            return jsonify({"error": "Number must be an integer between 1 and 20."}), 400
 
 
 @app.route("/between", methods=["POST"])
