@@ -72,7 +72,19 @@ def post_days_between_dates():
 @app.route("/weekday", methods=["POST"])
 def post_weekday_of_date():
     """Returns the day of the week a specific date is."""
-    pass
+
+    if "date" not in request.json:
+        return jsonify({"error": "Missing required data."}), 400
+
+    try:
+        date = convert_to_datetime(request.json["date"])
+    except Exception as error:
+        return jsonify({"error": error.args[0]}), 400
+
+    day = get_day_of_week_on(date)
+
+    add_to_history(request)
+    return jsonify({"weekday": day})
 
 
 if __name__ == "__main__":
