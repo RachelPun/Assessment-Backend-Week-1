@@ -42,16 +42,15 @@ def history():
             num = int(request.args["number"])
 
         add_to_history(request)
-        return jsonify(app_history[-1:-num:-1])
+        return jsonify(app_history[-1:-num-1:-1])
 
     if request.method == "DELETE":
         app_history.clear()
-        add_to_history(request)
         return jsonify({"status": "History cleared"})
 
 
 @app.route("/between", methods=["POST"])
-def post_days_between_dates():
+def between():
     """Returns the number of days between two dates."""
 
     if not all(arg in request.json for arg in ["first", "last"]):
@@ -70,7 +69,7 @@ def post_days_between_dates():
 
 
 @app.route("/weekday", methods=["POST"])
-def post_weekday_of_date():
+def weekday():
     """Returns the day of the week a specific date is."""
 
     if "date" not in request.json:
