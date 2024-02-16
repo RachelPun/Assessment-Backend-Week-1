@@ -34,10 +34,16 @@ def history_get_or_delete():
 
     num = 5
     if "number" in request.args:
-        if not isinstance(request.args["number"], int):
+        if not request.args["number"].isnumeric():
             return jsonify({"error": "Number must be an integer between 1 and 20."}), 400
-        if not 1 <= request.args["number"] <= 20:
+        if not 1 <= int(request.args["number"]) <= 20:
             return jsonify({"error": "Number must be an integer between 1 and 20."}), 400
+        num = int(request.args["number"])
+
+    result = app_history[-num:]
+    add_to_history(request)
+
+    return jsonify(result)
 
 
 @app.route("/between", methods=["POST"])
